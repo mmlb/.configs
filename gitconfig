@@ -1,0 +1,28 @@
+[user]
+	name = Manuel Mendez
+	email = mmendez@srtrl.com
+[advice]
+	implicitIdentity = false
+[alias]
+	graph = log --oneline --graph
+	log1 = log --oneline
+	mergenoff = merge --no-ff
+	ngrep = grep -n
+	publish = !sh -c ' \
+		remote=$([ $0 != "sh" ] && echo $0 || echo origin) && \
+		branch=$(git symbolic-ref HEAD| sed \"s|refs/heads/||\") && \
+		git push "$remote" "$branch":"$branch" && \
+		git branch -u "$remote/$branch" "$branch"'
+[color]
+	ui = true
+[diff]
+	renamelimit = 0
+[merge]
+	tool = meld
+	log = true
+[mergetool]
+	keepbackup = false
+[branch]
+	autosetuprebase = always
+[push]
+	default = matching
