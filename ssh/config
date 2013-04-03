@@ -1,0 +1,106 @@
+Host gitolite
+User git
+Hostname ampere.srtrl.com
+IdentityFile ~/.ssh/gitolite_rsa
+
+Host work
+Hostname eng029.srtrl.com
+user mmendez
+
+Host ampere
+HostName ampere.srtrl.com
+User ampere
+
+Host vipvm
+User lab
+
+Host orlandovm
+User lab
+HostName 172.16.17.230
+
+Host vip19
+User root
+
+Host vip24
+User root
+
+Host vip70
+User root
+
+Host vip71
+User root
+
+Host vip72
+User root
+
+Host vip80
+User root
+
+Host vip171
+User root
+
+Host op5mon
+User root
+
+Host op5log
+User root
+
+Host dsr7
+User root
+
+Host dsr7-ups
+User apc
+
+Host dsr8
+User root
+
+Host dsr8-ups
+User apc
+
+Host ras
+User root
+
+Host fin0
+User root
+
+Host fin1
+User root
+
+Host fin2
+User root
+
+Host fin3
+User root
+
+Host fin4
+User root
+
+Host card0
+User root
+
+Host card1
+User root
+
+Host card2
+User root
+
+Host card6
+User root
+
+#Host card0
+#User talon
+#
+#Host card1
+#User talon
+#
+#Host card2
+#User talon
+#
+#Host card3
+#User talon
+#
+#Host card4
+#User talon
+#
+#Host card5
+#User talon
