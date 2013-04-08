@@ -1,7 +1,8 @@
-Host gitolite
-User git
-Hostname ampere.srtrl.com
-IdentityFile ~/.ssh/gitolite_rsa
+Host mnas
+User root
+
+Host alarmpi
+User root
 
 Host work
 Hostname eng029.srtrl.com
