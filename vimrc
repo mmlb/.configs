@@ -10,6 +10,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/syntastic'
 Bundle 'sukima/xmledit'
+Bundle 'tpope/vim-fugitive'
 "Bundle 'majutsushi/tagbar'
 "Bundle 'Lokaltog/powerline'
 "Bundle 'tpope/vim-sensible'
