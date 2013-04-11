@@ -8,17 +8,23 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
+
 Bundle 'scrooloose/syntastic'
 let g:syntastic_c_checker = 'clang'
+
 Bundle 'sukima/xmledit'
 let g:xml_syntax_folding = 1
+
 Bundle 'tpope/vim-fugitive'
+
 Bundle 'LustyJuggler'
 let g:LustyJugglerDefaultMappings = 0
 nmap <leader>jl :LustyJuggler<CR>
+
 "Bundle 'Valloric/YouCompleteMe', managed with pacman so local llvm is used
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
