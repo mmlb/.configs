@@ -8,6 +8,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+Bundle 'scrooloose/syntastic'
 Bundle 'sukima/xmledit'
 "Bundle 'majutsushi/tagbar'
 "Bundle 'Lokaltog/powerline'
