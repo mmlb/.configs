@@ -9,11 +9,18 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/syntastic'
+let g:syntastic_c_checker = 'clang'
 Bundle 'sukima/xmledit'
+let g:xml_syntax_folding = 1
 Bundle 'tpope/vim-fugitive'
 "Bundle 'majutsushi/tagbar'
-"Bundle 'Lokaltog/powerline'
+"nnoremap <leader>a :TagbarToggle<CR>
+"let g:tagbar_autoclose = 1
+"let g:tagbar_autofocus = 1
+"let g:tagbar_expand = 1
+"let g:tagbar_autoshowtag = 1
 "Bundle 'tpope/vim-sensible'
+"Bundle 'Lokaltog/powerline'
 
 filetype on
 filetype indent on
@@ -23,15 +30,9 @@ syntax on
 
 let mapleader = ','
 nnoremap ; :
-nnoremap <leader>a :TagbarToggle<CR>
 
 let sh_minlines = 300 "Fixes the highlight errors when scrolling backwards
 let g:sh_fold_enabled = 1 "Enable folding of sh functions
-let g:xml_syntax_folding = 1
-"let g:tagbar_autoclose = 1
-"let g:tagbar_autofocus = 1
-"let g:tagbar_expand = 1
-"let g:tagbar_autoshowtag = 1
 
 "set autochdir
 set autoindent
@@ -78,7 +79,6 @@ set tags+=tags;/ " Search up the dir tree for tags
 "colorscheme zenburn
 colorscheme Tomorrow-Night
 
-let g:syntastic_c_checker = 'clang'
 "let g:ycm_add_preview_to_completeopt = 1
 "let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_extra_conf_globlist = ['~/code/*']
