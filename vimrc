@@ -16,6 +16,9 @@ let g:syntastic_c_checker = 'clang'
 Bundle 'sukima/xmledit'
 let g:xml_syntax_folding = 1
 Bundle 'tpope/vim-fugitive'
+Bundle 'LustyJuggler'
+let g:LustyJugglerDefaultMappings = 0
+nmap <leader>jl :LustyJuggler<CR>
 "Bundle 'majutsushi/tagbar'
 "nnoremap <leader>a :TagbarToggle<CR>
 "let g:tagbar_autoclose = 1
