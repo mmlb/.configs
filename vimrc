@@ -19,6 +19,14 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'LustyJuggler'
 let g:LustyJugglerDefaultMappings = 0
 nmap <leader>jl :LustyJuggler<CR>
+"Bundle 'Valloric/YouCompleteMe', managed with pacman so local llvm is used
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_extra_conf_globlist = ['~/code/*']
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jo <C-O>
+nnoremap <leader>ji <C-I>
+
 "Bundle 'majutsushi/tagbar'
 "nnoremap <leader>a :TagbarToggle<CR>
 "let g:tagbar_autoclose = 1
@@ -84,13 +92,6 @@ set tags+=tags;/ " Search up the dir tree for tags
 "let g:zenburn_high_Contrast=1
 "colorscheme zenburn
 colorscheme Tomorrow-Night
-
-"let g:ycm_add_preview_to_completeopt = 1
-"let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_extra_conf_globlist = ['~/code/*']
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jo <C-O>
-nnoremap <leader>ji <C-I>
 
 let g:proj_window_width=12
 
