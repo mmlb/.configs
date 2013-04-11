@@ -37,6 +37,7 @@ set backspace=eol,start,indent " allow backspacing over indent, eol, and start
 set hidden " Hide buffers instead of closing them, when changing
 set history=1000 " More command history
 set hlsearch "highlight search terms, temp clear with :noh
+nnoremap <silent> ,/ :nohlsearch<CR>
 set fdm=syntax
 set fdn=1
 set laststatus=2 "keep filename and ruler visible by having 2 lines for status
