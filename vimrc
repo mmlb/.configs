@@ -19,6 +19,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'LustyJuggler'
 let g:LustyJugglerDefaultMappings = 0
 nmap <leader>jl :LustyJuggler<CR>
+Bundle 'Raimondi/delimitMate'
 "Bundle 'Valloric/YouCompleteMe', managed with pacman so local llvm is used
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
