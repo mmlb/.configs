@@ -4,27 +4,20 @@ filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
-
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
-
 Bundle 'scrooloose/syntastic'
 let g:syntastic_c_checker = 'clang'
-
 Bundle 'sukima/xmledit'
 let g:xml_syntax_folding = 1
-
 Bundle 'tpope/vim-fugitive'
-
 Bundle 'LustyJuggler'
 let g:LustyJugglerDefaultMappings = 0
 nmap <leader>jl :LustyJuggler<CR>
-
 "Bundle 'Valloric/YouCompleteMe', managed with pacman so local llvm is used
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -32,15 +25,6 @@ let g:ycm_extra_conf_globlist = ['~/code/*']
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>jo <C-O>
 nnoremap <leader>ji <C-I>
-
-"Bundle 'majutsushi/tagbar'
-"nnoremap <leader>a :TagbarToggle<CR>
-"let g:tagbar_autoclose = 1
-"let g:tagbar_autofocus = 1
-"let g:tagbar_expand = 1
-"let g:tagbar_autoshowtag = 1
-"Bundle 'tpope/vim-sensible'
-"Bundle 'Lokaltog/powerline'
 
 filetype on
 filetype indent on
