@@ -30,3 +30,5 @@
 [user]
 	name = Manuel Mendez
 	email = mmendez@srtrl.com
+[help]
+	autocorrect = 1
