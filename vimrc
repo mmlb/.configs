@@ -7,6 +7,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
