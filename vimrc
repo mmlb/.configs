@@ -7,6 +7,7 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
@@ -81,9 +82,11 @@ set cino=:0,g0,l1,t0,(0,u0,N-s
 set tags+=tags;/ " Search up the dir tree for tags
 
 set t_Co=256
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 "let g:zenburn_high_Contrast=1
 "colorscheme zenburn
-colorscheme Tomorrow-Night
 
 let g:proj_window_width=12
 
