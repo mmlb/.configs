@@ -57,7 +57,6 @@ set number " Line numbers
 set pumheight=15 " Limit popup menu height
 set smartindent
 set smarttab " make <tab> and <backspace> smarter
-set t_Co=256
 set textwidth=80 " Break long lines @ 80 chars
 set title
 set undofile
@@ -81,6 +80,7 @@ set cino=:0,g0,l1,t0,(0,u0,N-s
 
 set tags+=tags;/ " Search up the dir tree for tags
 
+set t_Co=256
 "let g:zenburn_high_Contrast=1
 "colorscheme zenburn
 colorscheme Tomorrow-Night
