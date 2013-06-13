@@ -17,7 +17,7 @@ order += "disk /home"
 order += "disk /var"
 #order += "run_watch DHCP"
 order += "ethernet eth0"
-#order += "battery 0"
+#order += "battery 1"
 order += "load"
 order += "tztime local"
 
@@ -32,7 +32,7 @@ ethernet eth0 {
         format_down = "E:"
 }
 
-battery 0 {
+battery 1 {
         format = "%status %percentage %remaining"
 }
 
