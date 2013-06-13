@@ -13,6 +13,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
+Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'scrooloose/syntastic'
 let g:syntastic_c_checker = 'clang'
