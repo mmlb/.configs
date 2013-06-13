@@ -1,6 +1,7 @@
 set nocompatible " Do not be vi compatible (be more useful)
 
 filetype off                   " required!
+let mapleader = ','
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -36,7 +37,6 @@ filetype plugin on
 
 syntax on
 
-let mapleader = ','
 nnoremap ; :
 
 let sh_minlines = 300 "Fixes the highlight errors when scrolling backwards
