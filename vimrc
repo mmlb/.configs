@@ -82,6 +82,16 @@ set cino=:0,g0,l1,t0,(0,u0,N-s
 
 set tags+=tags;/ " Search up the dir tree for tags
 
+
+" Easy window navigation "
+""""""""""""""""""""""""""
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Color schemes "
+"""""""""""""""""
 set t_Co=256
 let g:solarized_termcolors=256
 set background=dark
