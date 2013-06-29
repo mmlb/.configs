@@ -1,4 +1,5 @@
 set nocompatible " Do not be vi compatible (be more useful)
+set encoding=utf-8
 
 filetype off                   " required!
 let mapleader = ','
