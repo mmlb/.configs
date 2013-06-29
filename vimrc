@@ -56,6 +56,7 @@ set fdn=1
 set laststatus=2 "keep filename and ruler visible by having 2 lines for status
 set mouse=a "enable use of mouse from vim/terminal
 set nobackup
+set noshowmode "Hide the default mode text (e.g. -- INSERT -- below the statusline)e
 set nowrap " Do not wrap line
 set number " Line numbers
 set pumheight=15 " Limit popup menu height
