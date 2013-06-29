@@ -77,7 +77,9 @@ set go-=m " Remove gvim menu bar
 set go-=T " Remove gvim menu toolbar
 set guicursor+=a:blinkon0 " Disable gvim cursor blink
 "set guifont=Droid\ Sans\ Mono\ Dotted\ 11
-set guifont=Meslo\ LG\ S\ DZ\ 11
+"set guifont=Meslo\ LG\ S\ DZ\ 11
+"set guifont=Menlo\ for\ Powerline\ 11
+set guifont=Source\ Code\ Pro\ Regular\ for\ Powerline\ Semi-Bold\ 11
 
 " :N place case labels N characters indented from switch
 " gN place C++ scope declarations N characters from block
