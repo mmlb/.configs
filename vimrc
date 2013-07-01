@@ -44,6 +44,10 @@ nnoremap ; :
 let sh_minlines = 300 "Fixes the highlight errors when scrolling backwards
 let g:sh_fold_enabled = 1 "Enable folding of sh functions
 
+"
+" NOTE: most of these should probably be above vundle configs
+"
+
 "set autochdir
 set autoindent
 set backspace=eol,start,indent " allow backspacing over indent, eol, and start
@@ -71,7 +75,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.d,*.bin " Dont tab complete some 
 
 set complete+=k "enable dictionary completion
 " Disable preview scratch window
-set completeopt=menu,menuone,longest
+set completeopt=menu,menuone,longest,preview
 
 set go-=m " Remove gvim menu bar
 set go-=T " Remove gvim menu toolbar
@@ -79,7 +83,7 @@ set guicursor+=a:blinkon0 " Disable gvim cursor blink
 "set guifont=Droid\ Sans\ Mono\ Dotted\ 11
 "set guifont=Meslo\ LG\ S\ DZ\ 11
 "set guifont=Menlo\ for\ Powerline\ 11
-set guifont=Source\ Code\ Pro\ Regular\ for\ Powerline\ Semi-Bold\ 11
+set guifont=Source\ Code\ Pro\ Semibold\ for\ Powerline\ Semi-Bold\ 11
 
 " :N place case labels N characters indented from switch
 " gN place C++ scope declarations N characters from block
