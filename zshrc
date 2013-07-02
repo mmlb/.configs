@@ -40,3 +40,5 @@ source /usr/share/zsh/site-contrib/powerline.zsh
 # Customize to your needs...
 export PATH=$PATH:/home/mmendez/bin:/home/mmendez/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/java/cppncss/bin:/usr/bin/core_perl:/home/mmendez/toolchains/Atheros_7_1_3_77_05_2009/build/gcc-3.4.4-2.16.1/build_mips_nofpu/bin:/home/mmendez/toolchains/CodeSourcery/Sourcery_G++_Lite/bin:/home/mmendez/toolchains/Atheros_7_1_3_77_05_2009/build/gcc-3.4.4-2.16.1/build_mips_nofpu/bin:/home/mmendez/toolchains/CodeSourcery/Sourcery_G++_Lite/bin:/home/mmendez/toolchains/arm-none-linux-gnueabi/bin/
 export LESS="FRSX"
+export EDITOR=vim
+export VISUAL=vim
