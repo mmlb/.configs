@@ -115,6 +115,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # lock the screen with gnome-screensaver-command
 bindsym $mod+Shift+g exec gnome-screensaver-command -l
+# run gvim
+bindsym $mod+g exec gvim
 # run chrome
 bindsym $mod+c exec chrome
 # run nautilus
