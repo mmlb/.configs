@@ -42,3 +42,5 @@ export PATH=$PATH:/home/mmendez/bin:/home/mmendez/bin:/usr/local/bin:/usr/bin:/b
 export LESS="FRSX"
 export EDITOR=vim
 export VISUAL=vim
+
+alias make="make -j$(($(grep processor /proc/cpuinfo | wc -l) + 1))"
