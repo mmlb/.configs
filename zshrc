@@ -32,7 +32,7 @@ CASE_SENSITIVE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitfast golang systemd taskwarrior vundle)
+plugins=(golang systemd taskwarrior vundle)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/site-contrib/powerline.zsh
