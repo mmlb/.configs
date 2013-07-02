@@ -152,3 +152,5 @@ bar {
         #status_command i3status
         status_command py3status -c ~/.config/i3status/config
 }
+
+workspace_auto_back_and_forth yes
