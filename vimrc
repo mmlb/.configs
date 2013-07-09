@@ -1,8 +1,8 @@
 set nocompatible " Do not be vi compatible (be more useful)
 set encoding=utf-8
+let mapleader = ','
 
 filetype off                   " required!
-let mapleader = ','
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
