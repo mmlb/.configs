@@ -118,7 +118,7 @@ bindsym $mod+Shift+g exec gnome-screensaver-command -l
 # run gvim
 bindsym $mod+g exec gvim
 # run chrome
-bindsym $mod+c exec chrome
+bindsym $mod+c exec google-chrome
 # run nautilus
 bindsym $mod+n exec nautilus
 # reload the configuration file
