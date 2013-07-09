@@ -103,10 +103,11 @@ map <C-l> <C-w>l
 """""""""""""""""
 set t_Co=256
 let g:solarized_termcolors=256
-set background=dark
 colorscheme solarized
 "let g:zenburn_high_Contrast=1
 "colorscheme zenburn
+
+set background=dark
 
 let g:proj_window_width=12
 
