@@ -16,6 +16,9 @@ let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'Glench/Vim-Jinja2-Syntax'
+Bundle 'hickop/vim-hickop-colors'
+Bundle 'jnurmine/Zenburn'
+Bundle 'nanotech/jellybeans.vim'
 Bundle 'scrooloose/syntastic'
 let g:syntastic_c_checker = 'clang'
 Bundle 'sukima/xmledit'
@@ -32,6 +35,7 @@ let g:ycm_extra_conf_globlist = ['~/code/*']
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>jo <C-O>
 nnoremap <leader>ji <C-I>
+Bundle 'w0ng/vim-hybrid'
 
 filetype on
 filetype indent on
@@ -103,9 +107,12 @@ map <C-l> <C-w>l
 """""""""""""""""
 set t_Co=256
 let g:solarized_termcolors=256
-colorscheme solarized
-"let g:zenburn_high_Contrast=1
+let g:zenburn_high_Contrast=1
 "colorscheme zenburn
+"colorscheme solarized
+"colorscheme jellybeans
+colorscheme hybrid
+"colorscheme hickop
 
 set background=dark
 
