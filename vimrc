@@ -9,12 +9,13 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
+
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'davidhalter/jedi-vim'
+Bundle 'Blackrush/vim-gocode'
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'wincent/Command-T'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'hickop/vim-hickop-colors'
 Bundle 'jnurmine/Zenburn'
@@ -27,7 +28,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'LustyJuggler'
 let g:LustyJugglerDefaultMappings = 0
 nmap <leader>jl :LustyJuggler<CR>
-Bundle 'Raimondi/delimitMate'
 "Bundle 'Valloric/YouCompleteMe', managed with pacman so local llvm is used
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
