@@ -3,6 +3,7 @@ let g:powerline_loaded = 1
 set nocompatible " Do not be vi compatible (be more useful)
 set encoding=utf-8
 let mapleader = ','
+set shell=bash
 
 filetype off                   " required!
 
