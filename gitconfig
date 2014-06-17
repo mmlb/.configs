@@ -32,3 +32,5 @@
 	email = mmendez@srtrl.com
 [help]
 	autocorrect = 1
+[core]
+	preloadindex = true

@@ -114,7 +114,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # run chrome
-bindsym $mod+c exec google-chrome
+bindsym $mod+c exec google-chrome-stable
 # run gvim
 bindsym $mod+g exec gvim
 # lock the screen with gnome-screensaver-command

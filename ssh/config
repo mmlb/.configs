@@ -1,8 +1,10 @@
-Host mnas
+Host manas
+Hostname manas.local
 User root
 
 Host alarmpi
 User root
+Hostname alarmpi.local
 
 Host work
 Hostname eng029.srtrl.com

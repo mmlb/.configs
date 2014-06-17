@@ -1,5 +1,3 @@
-let g:powerline_loaded = 1
-
 set nocompatible " Do not be vi compatible (be more useful)
 set encoding=utf-8
 let mapleader = ','
@@ -14,13 +12,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
-"Bundle 'Blackrush/vim-gocode'
-"Bundle 'nsf/gocode'
 let g:airline_powerline_fonts = 1
 Bundle 'bling/vim-airline'
 Bundle 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
+Bundle 'fatih/vim-go'
 Bundle 'wincent/Command-T'
 Bundle 'Glench/Vim-Jinja2-Syntax'
 Bundle 'hickop/vim-hickop-colors'
