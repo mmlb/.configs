@@ -13,10 +13,8 @@ general {
 }
 
 order += "disk /"
-order += "disk /home"
-order += "disk /var"
 #order += "run_watch DHCP"
-order += "ethernet eth0"
+order += "ethernet ens33"
 #order += "battery 1"
 order += "load"
 order += "tztime local"
@@ -26,7 +24,7 @@ wireless wlan0 {
         format_down = "W: down"
 }
 
-ethernet eth0 {
+ethernet ens33 {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip"
         format_down = "E:"
@@ -53,13 +51,5 @@ load {
 }
 
 disk "/" {
-        format = "root %free"
-}
-
-disk "/home" {
-        format = "home %free"
-}
-
-disk "/var" {
-        format = "var %free"
+        format = "/ %free free"
 }

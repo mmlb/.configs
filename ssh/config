@@ -1,3 +1,9 @@
+Host maxwell
+Host einstein
+
+Host gumstix
+User ubuntu
+
 Host mnas
 User root
 
@@ -10,7 +16,6 @@ user mmendez
 
 Host ampere
 HostName ampere.srtrl.com
-User ampere
 
 Host vipvm
 User lab
@@ -76,32 +81,9 @@ User root
 Host fin4
 User root
 
-Host card0
-User root
+Host card*
+User cardinal
 
-Host card1
+Host rcard0
 User root
-
-Host card2
-User root
-
-Host card6
-User root
-
-#Host card0
-#User talon
-#
-#Host card1
-#User talon
-#
-#Host card2
-#User talon
-#
-#Host card3
-#User talon
-#
-#Host card4
-#User talon
-#
-#Host card5
-#User talon
+Hostname card0

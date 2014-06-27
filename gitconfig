@@ -11,6 +11,8 @@
 		branch=$(git symbolic-ref HEAD| sed \"s|refs/heads/||\") && \
 		git push "$remote" "$branch":"$branch" && \
 		git branch -u "$remote/$branch" "$branch"'
+	vcommit = commit -v
+	commitv = commit -v
 [branch]
 	autosetuprebase = always
 [color]
@@ -32,3 +34,5 @@
 	email = mmendez@srtrl.com
 [help]
 	autocorrect = 1
+[core]
+	preloadindex = true
