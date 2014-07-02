@@ -11,4 +11,17 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+pmodload completion git gpg history-substring-search pacman ssh syntax-highlighting prompt
+prompt pure
 
+export LESS="FRSX"
+export EDITOR=vim
+export VISUAL=vim
+
+export MAKEFLAGS="-j$(($(grep processor -c /proc/cpuinfo) + 1))"
+
+export PATH=$HOME/bin:$PATH:/usr/bin/core_perl
+
+unalias rsync
+unalias scp
+unalias sftp
