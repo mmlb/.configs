@@ -64,6 +64,7 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 Plugin 'a.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'cstrahan/vim-capnp'
@@ -73,13 +74,18 @@ Plugin 'embear/vim-localvimrc'
 let g:localvimrc_persistent = 1
 set viminfo+=! "enable storing certain global variables
 
-let g:go_no_omnifunc = 1
-let g:no_fmt_autosave = 0
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 Plugin 'fatih/vim-go'
+
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'hickop/vim-hickop-colors'
 Plugin 'jnurmine/Zenburn'
+
+let g:ctrlp_extensions = ['tag', 'buffertag']
 Plugin 'kien/ctrlp.vim'
 nmap <leader>p :CtrlPMixed<CR>
 
@@ -88,7 +94,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_width = winwidth(0) - &textwidth - 7
 let g:tagbar_compact = 1
 let g:tagbar_indent = 1
-let g:tagbar_type_go = {'ctagstype' : 'go', 'kinds' : ['p:package', 'i:imports:1', 'c:constants', 'v:variables', 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods', 'r:constructor', 'f:functions'], 'sro' : '.', 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' }, 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' }, 'ctagsbin'  : 'gotags', 'ctagsargs' : '-sort -silent' } 
+let g:tagbar_type_go = {'ctagstype' : 'go', 'kinds' : ['p:package', 'i:imports:1', 'c:constants', 'v:variables', 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods', 'r:constructor', 'f:functions'], 'sro' : '.', 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' }, 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' }, 'ctagsbin'  : 'gotags', 'ctagsargs' : '-sort -silent' }
 
 Plugin 'mbbill/undotree'
 let g:undotree_DiffCommand = 'diff -u'
@@ -106,9 +112,6 @@ let g:xml_syntax_folding = 1
 
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-fugitive'
-Plugin 'LustyJuggler'
-let g:LustyJugglerDefaultMappings = 0
-nmap <leader>jl :LustyJuggler<CR>
 
 let g:CommandTFileScanner = 'find'
 Plugin 'wincent/Command-T'
