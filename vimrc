@@ -241,19 +241,3 @@ let g:proj_window_width=12
 
 "ctags -R --sort=foldcase --c++-kinds=+p --c-kinds=+p --fields=+Sail --extra=+q
 "cscope -bqRs -P
-
-" search up the directory tree for cscope files, and add it
-au BufReadPost *.[cChH],*.[cChH][pP][pP] silent! call AddCScopeFiles()
-function AddCScopeFiles()
-	for f in findfile("cscope.out", ".;/", -1)
-		let $CSCOPE_DB = f
-		try
-			cs add $CSCOPE_DB
-			"set cscoperelative " with no prefix given, use dirname of cscope.out
-					   " makes it easy to use with autochdir
-			set nocscopetag
-		catch
-		endtry
-	endfor
-	cs reset
-endfunction
