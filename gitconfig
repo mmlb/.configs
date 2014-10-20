@@ -4,13 +4,8 @@
 	graph = log --oneline --graph
 	log1 = log --oneline
 	mergenoff = merge --no-ff
-	ngrep = grep -n
 	noffmerge = merge --no-ff
-	publish = !sh -c ' \
-		remote=$([ $0 != "sh" ] && echo $0 || echo origin) && \
-		branch=$(git symbolic-ref HEAD| sed \"s|refs/heads/||\") && \
-		git push "$remote" "$branch":"$branch" && \
-		git branch -u "$remote/$branch" "$branch"'
+	ngrep = grep -n
 	vcommit = commit -v
 	commitv = commit -v
 [branch]
