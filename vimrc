@@ -28,7 +28,7 @@ set number " Line numbers
 set pumheight=15 " Limit popup menu height
 set smartindent
 set smarttab " make <tab> and <backspace> smarter
-set textwidth=80 " Break long lines @ 80 chars
+set textwidth=100 " Break long lines @ 80 chars
 set colorcolumn=+1 "highlight column after 'textwidth'
 set title
 set undofile
@@ -40,8 +40,9 @@ set complete+=k "enable dictionary completion
 " Disable preview scratch window
 set completeopt=menu,menuone,longest,preview
 
-set go-=m " Remove gvim menu bar
-set go-=T " Remove gvim menu toolbar
+set guioptions-=m " Remove gvim menu bar
+set guioptions-=T " Remove gvim menu toolbar
+set guioptions-=r " Remove gvim menu toolbar
 set guicursor+=a:blinkon0 " Disable gvim cursor blink
 " :N place case labels N characters indented from switch
 " gN place C++ scope declarations N characters from block
