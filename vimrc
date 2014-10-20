@@ -1,5 +1,9 @@
 syntax on
 
+if has('nvim')
+	runtime! plugin/python_setup.vim
+endif
+
 let g:powerline_loaded = 1
 
 set nocompatible " Do not be vi compatible (be more useful)
