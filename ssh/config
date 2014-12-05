@@ -1,3 +1,15 @@
+Host abcold
+Hostname 172.16.21.231
+User user
+
+Host abc
+Hostname 172.16.21.233
+User user
+
+Host lp
+Hostname 172.16.21.232
+User srt
+
 Host maxwell
 Host einstein
 
@@ -87,3 +99,7 @@ User cardinal
 Host rcard0
 User root
 Hostname card0
+
+host abc
+user user
+hostname 172.16.21.231

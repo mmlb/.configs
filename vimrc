@@ -1,7 +1,7 @@
 syntax on
 
 if has('nvim')
-	runtime! plugin/python_setup.vim
+	runtime! python_setup.vim
 endif
 
 let g:powerline_loaded = 1
@@ -53,89 +53,9 @@ set guicursor+=a:blinkon0 " Disable gvim cursor blink
 set cino=:0,g0,l1,t0,(0,u0,N-s
 set tags+=tags;/ " Search up the dir tree for tags
 
-let use_vundle = 0
-if use_vundle
-" Vundle stuff
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/vundle'
-
-Plugin 'a.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'cstrahan/vim-capnp'
-let g:promptline_powerline_symbols = 0
-Plugin 'edkolev/promptline.vim'
-Plugin 'embear/vim-localvimrc'
-let g:localvimrc_persistent = 1
-set viminfo+=! "enable storing certain global variables
-
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-Plugin 'fatih/vim-go'
-
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'hickop/vim-hickop-colors'
-Plugin 'jnurmine/Zenburn'
-
-let g:ctrlp_extensions = ['tag', 'buffertag']
-Plugin 'kien/ctrlp.vim'
-nmap <leader>p :CtrlPMixed<CR>
-
-Plugin 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_width = winwidth(0) - &textwidth - 7
-let g:tagbar_compact = 1
-let g:tagbar_indent = 1
-let g:tagbar_type_go = {'ctagstype' : 'go', 'kinds' : ['p:package', 'i:imports:1', 'c:constants', 'v:variables', 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods', 'r:constructor', 'f:functions'], 'sro' : '.', 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' }, 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' }, 'ctagsbin'  : 'gotags', 'ctagsargs' : '-sort -silent' }
-
-Plugin 'mbbill/undotree'
-let g:undotree_DiffCommand = 'diff -u'
-nnoremap <F5> :UndotreeToggle<CR>
-
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'saltstack/salt-vim'
-Plugin 'scrooloose/syntastic'
-let g:syntastic_c_checker = 'clang'
-
-Plugin 'sickill/vim-monokai'
-Plugin 'sjl/badwolf'
-Plugin 'sukima/xmledit'
-let g:xml_syntax_folding = 1
-
-Plugin 'tomasr/molokai'
-Plugin 'tpope/vim-fugitive'
-
-let g:CommandTFileScanner = 'find'
-Plugin 'wincent/Command-T'
-Plugin 'Valloric/YouCompleteMe' ", managed with pacman so local llvm is used
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_extra_conf_globlist = ['~/projects/*', '~/code/*', '~/src/*']
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jo <C-O>
-nnoremap <leader>ji <C-I>
-
-Plugin 'w0ng/vim-hybrid'
-
-call vundle#end()
-
-filetype plugin indent on
-
-else
-
-filetype off
 call plug#begin('~/.vim/plugged')
 Plug 'a.vim'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'cstrahan/vim-capnp'
@@ -155,6 +75,7 @@ Plug 'fholgado/minibufexpl.vim'
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
 Plug 'hickop/vim-hickop-colors'
 Plug 'jnurmine/Zenburn'
+Plug 'junegunn/vim-plug'
 
 let g:ctrlp_extensions = ['tag', 'buffertag']
 Plug 'kien/ctrlp.vim'
@@ -184,8 +105,6 @@ let g:xml_syntax_folding = 1
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 
-let g:CommandTFileScanner = 'find'
-Plug 'wincent/Command-T'
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ycm_build && ninja' }
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -197,8 +116,8 @@ nnoremap <leader>ji <C-I>
 Plug 'w0ng/vim-hybrid'
 
 call plug#end()
+
 filetype plugin indent on
-endif
 
 "set guifont=Droid\ Sans\ Mono\ Dotted\ 11
 "set guifont=Meslo\ LG\ S\ DZ\ 11
