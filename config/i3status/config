@@ -14,8 +14,10 @@ general {
 
 order += "disk /"
 #order += "run_watch DHCP"
-order += "ethernet ens33"
-#order += "battery 1"
+#order += "ethernet ens33"
+order += "wireless wlan0"
+order += "run_watch VPN"
+order += "battery 0"
 order += "load"
 order += "tztime local"
 
@@ -30,6 +32,10 @@ ethernet ens33 {
         format_down = "E:"
 }
 
+battery 0 {
+        format = "%status %percentage %remaining"
+}
+
 battery 1 {
         format = "%status %percentage %remaining"
 }
@@ -39,15 +45,15 @@ run_watch DHCP {
 }
 
 run_watch VPN {
-        pidfile = "/var/run/vpnc/pid"
+	pidfile = "/run/openvpn/mistify-dev-mmendez.pid"
 }
 
 tztime local {
-        format = "%Y-%m-%dT%H:%M:%S"
+        format = "%Y-%m-%dT%I:%M:%S"
 }
 
 load {
-        format = "%1min"
+        format = "Load %1min %5min %15min"
 }
 
 disk "/" {

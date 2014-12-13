@@ -26,8 +26,10 @@
 	default = current
 [user]
 	name = Manuel Mendez
-	email = mmendez@srtrl.com
+	email = mmendez@omniti.com
 [help]
 	autocorrect = 1
 [core]
 	preloadindex = true
+[url "git@github.com:mistifyio"]
+	insteadOf = https://github.com/mistifyio
