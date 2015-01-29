@@ -33,7 +33,7 @@ ethernet ens33 {
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "Batt %status %percentage %remaining"
 }
 
 battery 1 {

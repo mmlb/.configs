@@ -32,7 +32,7 @@ set number " Line numbers
 set pumheight=15 " Limit popup menu height
 set smartindent
 set smarttab " make <tab> and <backspace> smarter
-set textwidth=100 " Break long lines @ 80 chars
+set textwidth=80 " Break long lines @ 80 chars
 set colorcolumn=+1 "highlight column after 'textwidth'
 set title
 set undofile
@@ -55,15 +55,8 @@ set tags+=tags;/ " Search up the dir tree for tags
 
 call plug#begin('~/.vim/plugged')
 Plug 'a.vim'
-"Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'cstrahan/vim-capnp'
-let g:promptline_powerline_symbols = 0
-Plug 'edkolev/promptline.vim'
-Plug 'embear/vim-localvimrc'
-let g:localvimrc_persistent = 1
-set viminfo+=! "enable storing certain global variables
 
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -73,8 +66,6 @@ Plug 'fatih/vim-go'
 
 Plug 'fholgado/minibufexpl.vim'
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
-Plug 'hickop/vim-hickop-colors'
-Plug 'jnurmine/Zenburn'
 Plug 'junegunn/vim-plug'
 
 let g:ctrlp_extensions = ['tag', 'buffertag']
@@ -88,22 +79,12 @@ let g:tagbar_compact = 1
 let g:tagbar_indent = 1
 let g:tagbar_type_go = {'ctagstype' : 'go', 'kinds' : ['p:package', 'i:imports:1', 'c:constants', 'v:variables', 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods', 'r:constructor', 'f:functions'], 'sro' : '.', 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' }, 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' }, 'ctagsbin'  : 'gotags', 'ctagsargs' : '-sort -silent' }
 
-Plug 'mbbill/undotree'
-let g:undotree_DiffCommand = 'diff -u'
-nnoremap <F5> :UndotreeToggle<CR>
-
-Plug 'nanotech/jellybeans.vim'
-Plug 'saltstack/salt-vim', { 'for': 'salt' }
+Plug 'saltstack/salt-vim', { 'for': 'sls' }
 Plug 'scrooloose/syntastic'
 let g:syntastic_c_checker = 'clang'
 
-Plug 'sickill/vim-monokai'
-Plug 'sjl/badwolf'
 Plug 'sukima/xmledit', { 'for': 'xml' }
 let g:xml_syntax_folding = 1
-
-Plug 'tomasr/molokai'
-Plug 'tpope/vim-fugitive'
 
 Plug 'Valloric/YouCompleteMe', { 'do': 'cd ycm_build && ninja' }
 let g:ycm_add_preview_to_completeopt = 1
@@ -119,11 +100,7 @@ call plug#end()
 
 filetype plugin indent on
 
-"set guifont=Droid\ Sans\ Mono\ Dotted\ 11
-"set guifont=Meslo\ LG\ S\ DZ\ 11
-"set guifont=Menlo\ for\ Powerline\ 11
-"set guifont=Source\ Code\ Pro\ Semibold\ for\ Powerline\ Semi-Bold\ 11
-set guifont=Source\ Code\ Pro\ Semibold\ Semi-Bold\ 11
+set guifont=Source\ Code\ Pro\ Semibold\ Semi-Bold\ 14
 
 """"""""""""""""""""""""""
 " Easy window navigation "
@@ -140,19 +117,11 @@ set t_Co=256
 set background=dark
 let g:rehash256=1
 
-"colorscheme badwolf
-"colorscheme hickop
 colorscheme hybrid
-"colorscheme jellybeans
-"let g:solarized_termcolors=256
-"colorscheme solarized
-"let g:zenburn_high_Contrast=1
-"colorscheme zenburn
-"let g:molokai_original = 1
-"colorscheme molokai
-"colorscheme monokai
 
 let g:proj_window_width=12
+
+autocmd BufRead,BufNewFile *.adoc setlocal filetype=asciidoc makeprg=asciidoctor\ %
 
 " Add tab after word that is completed already:
 "  - Be in insert mode
