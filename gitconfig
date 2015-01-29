@@ -6,11 +6,8 @@
 	mergenoff = merge --no-ff
 	ngrep = grep -n
 	noffmerge = merge --no-ff
-	publish = !sh -c ' \
-		remote=$([ $0 != "sh" ] && echo $0 || echo origin) && \
-		branch=$(git symbolic-ref HEAD| sed \"s|refs/heads/||\") && \
-		git push "$remote" "$branch":"$branch" && \
-		git branch -u "$remote/$branch" "$branch"'
+	vcommit = commit -v
+	commitv = commit -v
 [branch]
 	autosetuprebase = always
 [color]
@@ -29,8 +26,6 @@
 	default = current
 [user]
 	name = Manuel Mendez
-	email = mmendez@srtrl.com
+	email = mmendez534@gmail.com
 [help]
 	autocorrect = 1
-[core]
-	preloadindex = true

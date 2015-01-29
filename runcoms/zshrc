@@ -1,0 +1,30 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+[[ -r /usr/share/zsh/site-functions/_z ]] && source /usr/share/zsh/site-functions/_z
+
+# Customize to your needs...
+pmodload completion git gpg history-substring-search pacman ssh syntax-highlighting prompt
+prompt pure
+
+export LESS="FRSX"
+export EDITOR=vim
+export VISUAL=vim
+
+export MAKEFLAGS="-j$(($(grep processor -c /proc/cpuinfo) + 1))"
+
+export PATH=$HOME/bin:$PATH:/usr/bin/core_perl
+
+unalias find
+unalias rsync
+unalias scp
+unalias sftp
