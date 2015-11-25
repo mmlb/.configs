@@ -3,11 +3,13 @@ dev:
     - pkgs:
       - clang
       - cmake
+      - docker
       - gdb
       - git
       - gitg
       - go
       - lsof
+      - lxc
       - ltrace
       - ninja
       - strace

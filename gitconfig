@@ -24,6 +24,8 @@
 	prompt = no
 [push]
 	default = current
+[url "git@github.com:mistifyio"]
+	insteadOf = https://github.com/mistifyio
 [user]
 	name = Manuel Mendez
 	email = mmendez534@gmail.com
