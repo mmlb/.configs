@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#
+# ~/.xsession
+#
+# Executed by xdm/gdm/kdm at login
+#
+
+[[ -f ~/bin/arch-init ]] && ~/bin/arch-init
+[[ -d /tmp/mmendez ]] || mkdir $TMPDIR

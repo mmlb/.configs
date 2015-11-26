@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -v
+
+for f in dot-*; do
+	ln -sf configs/$f ../${f/dot-/.}
+done
