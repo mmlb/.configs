@@ -1,9 +1,6 @@
-syntax on
-
 " nvim: {{{
 if has('nvim')
 	runtime! python_setup.vim
-	set mouse=a "enable use of mouse from vim/terminal
 	set t_Co=256
 	tnoremap <Esc> <C-\><C-n>
 	autocmd TermClose * bd!
@@ -39,6 +36,17 @@ if has('nvim')
 	" light4 + light1
 	let g:terminal_color_7 = "#a89984"
 	let g:terminal_color_15 = "#ebdbb2"
+else
+	" neovim default features
+	syntax on
+	set mouse=a "enable use of mouse from vim/terminal
+	set backspace=eol,start,indent " allow backspacing over indent, eol, and start
+	set history=10000 " More command history
+	set hlsearch "highlight search terms, temp clear with :noh
+	set laststatus=2 "keep filename and ruler visible by having 2 lines for status
+	set smarttab " make <tab> and <backspace> smarter
+	set tags+=./tags;,tags " Search up the dir tree for tags
+	set wildmenu "make tab completion for files/buffers act like bash
 endif
 "}}}
 " global settings: {{{
@@ -56,7 +64,6 @@ nnoremap <silent> ,/ :nohlsearch<CR>
 let g:terminal_scrollback_buffer_size = 100000
 
 set autoindent
-set backspace=eol,start,indent " allow backspacing over indent, eol, and start
 set backup
 set backupdir=~/.local/share/nvim/backup
 " :N place case labels N characters indented from switch
@@ -72,9 +79,6 @@ set foldlevel=0
 set foldnestmax=1
 "let &foldlevelstart=&foldnestmax + 1
 set hidden " Hide buffers instead of closing them, when changing
-set history=1000 " More command history
-set hlsearch "highlight search terms, temp clear with :noh
-set laststatus=2 "keep filename and ruler visible by having 2 lines for status
 set modeline
 set noshowmode "Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set nowrap " Do not wrap line
@@ -82,17 +86,14 @@ set number relativenumber " hybrid number mode
 set pumheight=15 " Limit popup menu height
 "set scrolloff=999 " keep cursor in middle of window when scrolling
 set smartindent
-set smarttab " make <tab> and <backspace> smarter
 set spell
 set splitbelow
-set tags+=tags;/ " Search up the dir tree for tags
 set termguicolors " truecolor support
 set textwidth=80 " Break long lines @ 80 chars
 set title
 set undofile
 set undolevels=256 " More undo
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.d,*.bin " Dont tab complete some files
-set wildmenu "make tab completion for files/buffers act like bash
 set wildmode=list:longest,full
 "}}}
 
