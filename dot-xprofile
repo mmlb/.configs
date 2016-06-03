@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 xrandr --dpi 192 \
-	--output eDP1 --auto --scale 1x1 --pos 0x3200 \
+	--output eDP1  --auto --scale 1x1 --pos 0x3200  --primary \
 	--output HDMI1 --auto --scale 2x2 --rotate left --pos 0x0 \
-	--output HDMI2 --scale 2x2 --pos 2400x800
+	--output HDMI2 --auto --scale 2x2 --pos 2400x800 \
+	--output HDMI3 --auto --scale 2x2 --pos 0x0 \
+	;

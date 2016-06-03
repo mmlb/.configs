@@ -1,33 +1,37 @@
 [advice]
 	implicitIdentity = false
 [alias]
-	graph = log --oneline --graph
-	log1 = log --oneline
-	mergenoff = merge --no-ff
-	ngrep = grep -n
-	noffmerge = merge --no-ff
-	vcommit = commit -v
 	commitv = commit -v
+	log1    = log --oneline
+	log1m   = log --oneline master..
+	log1r   = log --oneline --reverse
+	log1rm  = log --oneline --reverse master..
+	publish = push -u
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [branch]
 	autosetuprebase = always
 [color]
-	ui = true
+	ui = auto
 [diff]
 	renamelimit = 0
+	algorithm = histogram
 [difftool]
 	prompt = no
+[help]
+	autocorrect = 1
 [merge]
-	tool = meld
 	log = true
+	tool = meld
 [mergetool]
 	keepBackup = false
 	prompt = no
+[pager]
+	diff = diff-so-fancy | less
+	show = diff-so-fancy | less
 [push]
 	default = current
 [url "git@github.com:mistifyio"]
 	insteadOf = https://github.com/mistifyio
 [user]
-	name = Manuel Mendez
 	email = mmendez534@gmail.com
-[help]
-	autocorrect = 1
+	name = Manuel Mendez

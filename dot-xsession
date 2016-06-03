@@ -7,4 +7,4 @@
 #
 
 [[ -f ~/bin/arch-init ]] && ~/bin/arch-init
-[[ -d /tmp/mmendez ]] || mkdir $TMPDIR
+[[ ! -d $TMPDIR ]] || mkdir $TMPDIR
