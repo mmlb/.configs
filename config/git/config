@@ -32,8 +32,6 @@
 	compactionHeuristic = true
 [difftool]
 	prompt = no
-[gitrepo "github"]
-	token = 38c4e39330a403e2abda0e3aa71ea700738fe566
 [help]
 	autocorrect = 1
 [interactive]
