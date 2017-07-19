@@ -1,8 +1,20 @@
 #!/bin/bash
 
-xrandr --dpi 192 \
-	--output eDP1  --auto --scale 1x1 --pos 0x3200  --primary \
-	--output HDMI1 --auto --scale 2x2 --rotate left --pos 0x0 \
-	--output HDMI2 --auto --scale 2x2 --pos 2400x800 \
-	--output HDMI3 --auto --scale 2x2 --pos 0x0 \
-	;
+# HDMIs = 1600x1200
+# eDP1  = 2880x1800
+
+declare -A scales
+declare -A positions
+
+dpi=192
+scales=([eDP1]=1x1 [HDMI1]=2x2 [HDMI2]=2x2)
+positions=([eDP1]=2400x2400 [HDMI1]=0x0 [HDMI2]=2400x0)
+
+#dpi=96
+#scales=([eDP1]=.5x.5 [HDMI1]=1x1 [HDMI2]=1x1)
+#positions=([eDP1]=1200x1200 [HDMI1]=0x0 [HDMI2]=1200x0)
+
+xrandr --dpi $dpi \
+    --output eDP1 --auto --primary --scale "${scales[eDP1]}" --rotate normal --pos "${positions[eDP1]}" \
+    --output HDMI1 --auto --scale "${scales[HDMI1]}" --rotate left --pos "${positions[HDMI1]}" \
+    --output HDMI2 --auto --scale "${scales[HDMI2]}" --rotate normal --pos "${positions[HDMI2]}"

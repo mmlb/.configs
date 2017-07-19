@@ -1,3 +1,108 @@
-Host maxwell
-Host einstein
-Host mnas
+kexalgorithms diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
+host *.lan
+  pubkeyauthentication yes
+  identityfile ~/.ssh/id_ed25519
+
+host prov1.*.packet.net install.nrt1.packet.net
+  user core
+
+host ????????
+  hostname %h.packethost.net
+
+host ???????? *.packethost.net [0-9a-e]{8}
+  identityfile ~/.ssh/packet_servers_ed25519
+  identityfile ~/.ssh/packet_servers_rsa
+  pubkeyauthentication yes
+  stricthostkeychecking no
+  userknownhostsfile /dev/null
+  user root
+
+host flowtools1.ams1.packet.net
+  hostname eng1.ams1.packet.net
+host flowtools1.sjc1.packet.net
+  hostname 147.75.201.173
+host flowtools1.nrt1.packet.net
+  hostname eng1.nrt1.packet.net
+host flowdb1.packet.net
+  hostname 147.75.194.3
+
+host eng1.sjc1.packet.net
+  port 65022
+
+host *.packet.net
+  user manny
+  pubkeyauthentication yes
+  identityfile ~/.ssh/packet_ed25519
+
+host mirror.*.packet.net
+  hostname mgmt.%h
+
+host sos.*.packet.net
+  pubkeyauthentication yes
+  identityfile ~/.ssh/packet_servers_ed25519
+
+host mm-builder
+  #hostname 2604:1380:2:4200::3
+  hostname 147.75.105.137
+  user root
+  pubkeyauthentication yes
+  identityfile ~/.ssh/packet_servers_ed25519
+
+host mmhost
+  hostname 147.75.197.97
+  user root
+  pubkeyauthentication yes
+  identityfile ~/.ssh/packet_servers_ed25519
+
+host sorendb
+  hostname 147.75.106.199
+  identityfile ~/.ssh/packet_servers_ed25519
+  pubkeyauthentication yes
+  user root
+
+host soren
+  pubkeyauthentication yes
+  hostname 147.75.104.1
+  user root
+  identityfile ~/.ssh/packet_servers_ed25519
+
+host kudipanas.lan
+  user root
+  identityfile ~/.ssh/id_kudipanas
+
+host bignas.lan
+  user manny
+
+host router.lan
+  user root
+  identityfile ~/.ssh/id_router_ed25519
+
+Host github.com
+  PubkeyAuthentication yes
+  IdentityFile ~/.ssh/github_id_ed25519
+
+Host *.archlinux.org
+  pubkeyauthentication yes
+  identityFile ~/.ssh/id_ed25519_aur
+  user aur
+
+Host *.tmate.io
+  stricthostkeychecking no
+  userknownhostsfile /dev/null
+
+host *.amazonaws.com
+  identityFile ~/.ssh/id_rsa_amazon
+  pubkeyauthentication yes
+  stricthostkeychecking no
+  userknownhostsfile /dev/null
+
+Host *
+  Compression yes
+  ControlMaster auto
+  ControlPath /run/user/1000/control-master/%r@%h:%p
+  ControlPersist 10m
+
+  # following was from https://github.com/FiloSottile/whosthere
+  #PubkeyAuthentication no
+  #IdentitiesOnly yes

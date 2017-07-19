@@ -1,3 +1,2 @@
-authorized_keys
-known_hosts*
-id_*
+*
+!config

@@ -1,17 +1,19 @@
 " nvim: {{{
 
-set shell=/bin/bash
 if has('nvim')
+	set tags+=./tags;,tags " Search up the dir tree for tags
 	runtime! python_setup.vim
 	set t_Co=256
-	tnoremap <Esc> <C-\><C-n>
+	"tnoremap <Esc> <C-\><C-n>
+	tnoremap kj <C-\><C-n>
 	autocmd TermClose * bd!
+	autocmd TermOpen * setlocal nonumber norelativenumber
 
 	" dark0 + gray
 	let g:terminal_color_0 = "#282828"
 	let g:terminal_color_8 = "#928374"
 
-	" neurtral_red + bright_red
+	" neutral_red + bright_red
 	let g:terminal_color_1 = "#cc241d"
 	let g:terminal_color_9 = "#fb4934"
 
@@ -38,10 +40,11 @@ if has('nvim')
 	" light4 + light1
 	let g:terminal_color_7 = "#a89984"
 	let g:terminal_color_15 = "#ebdbb2"
+
+	set inccommand=split
 else
 	" neovim default features
 	syntax on
-	set mouse=a "enable use of mouse from vim/terminal
 	set backspace=eol,start,indent " allow backspacing over indent, eol, and start
 	set history=10000 " More command history
 	set hlsearch "highlight search terms, temp clear with :noh
@@ -67,7 +70,7 @@ let g:terminal_scrollback_buffer_size = 100000
 
 set autoindent
 set backup
-set backupdir=~/.local/share/nvim/backup
+set backupdir-=.
 " :N place case labels N characters indented from switch
 " gN place C++ scope declarations N characters from block
 set cino=:0,g0,l1,t0,(0,u0,N-s
@@ -82,15 +85,19 @@ set foldnestmax=1
 "let &foldlevelstart=&foldnestmax + 1
 set hidden " Hide buffers instead of closing them, when changing
 set modeline
+set mouse=a "enable use of mouse from vim/terminal
 set noshowmode "Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set nowrap " Do not wrap line
-set number relativenumber " hybrid number mode
+set number
+set relativenumber " hybrid number mode
 set pumheight=15 " Limit popup menu height
 "set scrolloff=999 " keep cursor in middle of window when scrolling
 set smartindent
-set spell
+"set spell
 set splitbelow
+if $TERM != 'xterm'
 set termguicolors " truecolor support
+endif
 set textwidth=80 " Break long lines @ 80 chars
 set title
 set undofile
@@ -103,7 +110,7 @@ set wildmode=list:longest,full
 set completeopt+=noinsert
 set completeopt+=noselect
 "}}}
-call plug#begin('~/.vim/plugged')
+call plug#begin($XDG_CONFIG_DIR . "/nvim/plugged")
 " linters and status line: {{{
 
 Plug 'neomake/neomake'
@@ -111,14 +118,14 @@ Plug 'neomake/neomake'
 " http://vim.1045645.n5.nabble.com/autocmd-pattern-exclusion-td5712330.html
 autocmd BufWritePost * call GoNeomakeBang()
 function! GoNeomakeBang()
-	if &ft == 'go'
+	if index(['go'], &ft) > -1
 		Neomake!
 	else
 		Neomake
 	endif
 endfun
 
-Plug 'bling/vim-airline'
+"Plug 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
@@ -140,10 +147,17 @@ let g:airline_powerline_fonts = 1
 "let g:airline_symbols.paste = '∥'
 "let g:airline_symbols.whitespace = 'Ξ'
 
+let g:formatters_c = []
+let g:formatters_h = []
 let g:formatters_go = []
-let g:formatdef_shfmt = '"shfmt -i 4"'
+let g:formatdef_shfmt = '"shfmt"'
+"let g:formatdef_yamlfmt = '"yamlfmt"'
 let g:formatters_sh = ['shfmt']
+"et g:formatters_yaml = ['yamlfmt']
+let g:formatters_zsh = ['shfmt']
 "let g:autoformat_verbosemode = 1
+let g:formatdef_yapf = "'yapf -l '.a:firstline.'-'.a:lastline"
+let g:formatters_python = ['yapf']
 Plug 'Chiel92/vim-autoformat'
 
 "Plug 'scrooloose/syntastic'
@@ -170,8 +184,10 @@ nnoremap <leader>ji <C-I>
 "Plug 'chriskempson/base16-vim'
 "Plug 'chriskempson/vim-tomorrow-theme'
 "Plug 'cschlueter/vim-mustang'
+Plug 'dracula/vim'
 "let g:zenburn_high_Contrast = 1
-"Plug 'jnurmine/Zenburn'
+Plug 'jnurmine/Zenburn'
+Plug 'mattboehm/vim-unstack'
 "Plug 'mdlerch/vim-tungsten'
 Plug 'mhinz/vim-janah'
 "Plug 'morhetz/gruvbox'
@@ -194,21 +210,26 @@ au FileType go nmap <leader>c <Plug>(go-callers)
 au FileType go nmap <leader>i <Plug>(go-imports)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>t <Plug>(go-test)
+let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
+let g:go_def_mapping_enabled = 1
 let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
 let g:go_highlight_build_constraints = 1
 autocmd BufWritePost *.go GoBuild
-let g:go_fmt_command = "goimports"
 Plug 'fatih/vim-go', {'for': 'go'}
 
 Plug 'fatih/vim-nginx', {'for': 'nginx'}
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 Plug 'hashivim/vim-vagrant'
 Plug 'jelera/vim-javascript-syntax', {'for': 'js'}
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/local_vimrc'
 Plug 'markcornick/vim-terraform'
 Plug 'mmlb/vim-systemd'
 Plug 'nhooyr/neoman.vim'
+Plug 'Shougo/neco-syntax'
 "Plug 'phpfmt/vim-phpfmt', {'for': 'php'}
 "let g:phpfmt_update_on_open = 0
 
@@ -216,6 +237,7 @@ Plug 'rhysd/vim-clang-format', {'for': ['c', 'cpp']}
 let g:clang_format#code_style = 'llvm'
 let g:clang_format#style_options = {"BasedOnStyle": "LLVM", "IndentWidth": 8, "UseTab": "Always", "BreakBeforeBraces": "Linux", "AllowShortIfStatementsOnASingleLine": "false", "IndentCaseLabels": "false"}
 
+Plug 'saltstack/salt-vim'
 Plug 'sukima/xmledit', {'for': 'xml'}
 let g:xml_syntax_folding = 1
 "}}}
@@ -226,6 +248,7 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 
 Plug 'guns/xterm-color-table.vim'
 Plug 'hkupty/nvimux'
+let nvimux_open_term_by_default = 1
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': 'yes \| ./install'}
 nmap <C-P> :FZF<CR>
@@ -252,6 +275,7 @@ Plug 'mbbill/undotree'
 
 "Plug 'mhinz/vim-startify'
 Plug 'PeterRincker/vim-argumentative'
+Plug 'qpkorr/vim-bufkill'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
 Plug 'rhysd/clever-f.vim'
 "Plug 'rhysd/committia.vim'
@@ -260,8 +284,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'Shougo/vinarise.vim'
 "Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 
 "Plug 'techlivezheng/vim-plugin-minibufexpl'
@@ -270,10 +295,13 @@ Plug 'Valloric/ListToggle'
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
 Plug 'vim-scripts/Align'
+Plug 'vim-scripts/bats.vim'
 Plug 'vim-scripts/SQLUtilities', {'for': ['sql', 'php']}
 Plug 'vim-scripts/visual-increment'
 Plug 'wellle/targets.vim'
+Plug 'zchee/deoplete-clang', {'for': ['c', 'cpp']}
 Plug 'zchee/deoplete-go', {'for': ['go'], 'do': 'make'}
+Plug 'zchee/deoplete-jedi', {'for': ['python']}
 "}}}
 call plug#end()
 " plugin post-config: {{{
@@ -293,8 +321,10 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 set guioptions-=mTr " Remove gvim menu bars
 set guicursor+=a:blinkon0 " Disable gvim cursor blink
 
+" nvim does not read this and in fact can't configure the terminal anyway
 "set guifont=Source\ Code\ Pro\ Semibold\ Semi-Bold\ 14
-set guifont=Hack\ 14
+"set guifont=Hack\ 14
+"set guifont=Go\ Mono\ 10
 "}}}
 " colorscheme: {{{
 set background=dark
@@ -304,10 +334,11 @@ set background=dark
 "colorscheme apprentice
 "colorscheme base16-ocean
 "colorscheme base16-tomorrow
-colorscheme janah
+"colorscheme dracula
 "colorscheme molokai
 "colorscheme monochrome
 "colorscheme zenburn
+colorscheme janah
 
 "omfg huge thanks to @mhinz for this
 autocmd ColorScheme zenburn highlight CursorLineNr guibg=#333333
@@ -340,4 +371,10 @@ let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#sources#go#align_class = 1
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 autocmd FileType gitcommit let b:airline_whitespace_disabled=1
+autocmd FileType yaml set filetype=ansible
 autocmd Syntax gitcommit normal zR
+set dictionary+=$XDG_CONFIG_DIR/nvim/spell/en.utf-8.spl
+"autocmd FileType * execute 'setlocal dictionary+=$XDG_CONFIG_DIR/nvim/spell/'.&filetype.'.spl'
+"autocmd BufWinEnter,WinEnter term://* startinsert
+"autocmd BufLeave term://* stopinsert
+set backupdir=~/.local/share/nvim/backup

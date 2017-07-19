@@ -1,0 +1,1 @@
+/home/manny/cloned/syntax-dosini.vim/syntax/pmacctd.vim

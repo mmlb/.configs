@@ -2,3 +2,4 @@
 Xft.autohint: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
+Xft.dpi: 192

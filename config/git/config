@@ -1,0 +1,63 @@
+[advice]
+	implicitIdentity = false
+[alias]
+	commitv   = commit -v
+	fixup     = !git commit --fixup=$(git fzf)
+	squash    = !git commit --squash=$(git fzf)
+	fzf       = !git log --oneline master.. | fzf | awk '{print $1}'
+	hub       = repo hub
+	lg        = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	log1      = log --oneline
+	log1m     = log --oneline master..
+	log1r     = log --oneline --reverse
+	log1rm    = log --oneline --reverse master..
+	logrm     = log --reverse master..
+	mergenoff = merge --no-ff
+	publish   = push -u
+	redo      = commit --amend -C HEAD
+[branch]
+	autosetuprebase = always
+[color]
+	ui = auto
+[color "status"]
+	untracked = red
+	added = green
+	changed = yellow
+[commit]
+	verbose = true
+[diff]
+	renamelimit = 0
+	algorithm = histogram
+	renames = copies
+	compactionHeuristic = true
+[difftool]
+	prompt = no
+[gitrepo "github"]
+	token = 38c4e39330a403e2abda0e3aa71ea700738fe566
+[help]
+	autocorrect = 1
+[interactive]
+	#diffFilter = diff-so-fancy --patch
+[merge]
+	log = true
+	tool = meld
+[mergetool]
+	keepBackup = false
+	prompt = no
+[pager]
+	diff = diff-so-fancy | less
+	show = diff-so-fancy | less
+[push]
+	default = current
+[rebase]
+	stat = true
+[submodule]
+	fetchJobs = 8
+[url "ssh://git@github.com/mistifyio"]
+	insteadOf = https://github.com/mistifyio
+[url "ssh://git@github.com/packethost"]
+	insteadOf = https://github.com/packethost
+[user]
+	email = mmendez534@gmail.com
+	name = Manuel Mendez
+	useConfigOnly = true
