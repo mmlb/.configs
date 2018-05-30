@@ -2,9 +2,8 @@
 	implicitIdentity = false
 [alias]
 	commitv   = commit -v
-	fixup     = !git commit --fixup=$(git fzf)
-	squash    = !git commit --squash=$(git fzf)
-	fzf       = !git log --oneline master.. | fzf | awk '{print $1}'
+	fixup     = !sh -c 'git commit --fixup=$(git fzf "$1")' "$1"
+	fzf       = !git log --oneline "${1:-master}.." | fzf | awk '{print $1}'
 	hub       = repo hub
 	lg        = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	log1      = log --oneline
@@ -13,12 +12,26 @@
 	log1rm    = log --oneline --reverse master..
 	logrm     = log --reverse master..
 	mergenoff = merge --no-ff
+	pr        = "!f() { git fetch origin pull/$1/head:pr$1; }; f"
 	publish   = push -u
 	redo      = commit --amend -C HEAD
+	squash    = !sh -c 'git commit --squash=$(git fzf "$1")' "$1"
 [branch]
 	autosetuprebase = always
 [color]
-	ui = auto
+	ui = true
+[color "diff"]
+	#meta = 227
+	#frag = magenta bold
+	#commit = 227 bold
+	#old = red bold
+	#new = green bold
+	whitespace = red reverse
+[color "diff-highlight"]
+	#oldNormal = red bold
+	#oldHighlight = red bold 52
+	#newNormal = green bold
+	#newHighlight = green bold 22
 [color "status"]
 	untracked = red
 	added = green
@@ -32,6 +45,11 @@
 	compactionHeuristic = true
 [difftool]
 	prompt = no
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [help]
 	autocorrect = 1
 [interactive]
