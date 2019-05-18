@@ -299,3 +299,4 @@ exec swayidle \
     before-sleep 'swaylock -c 000000'
 
 xwayland enable
+include $(hostname)
