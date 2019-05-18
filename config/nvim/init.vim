@@ -55,6 +55,7 @@ nnoremap <leader>t <C-t>
 nnoremap <silent> ,/ :nohlsearch<CR>
 
 set autoindent
+set autowrite
 set backup
 set backupdir=~/.local/share/nvim/backup
 " :N place case labels N characters indented from switch
@@ -62,11 +63,17 @@ set backupdir=~/.local/share/nvim/backup
 set cino=:0,g0,l1,t0,(0,u0,N-s
 set colorcolumn=+1 "highlight column after 'textwidth'
 set complete+=k,kspell
-set completeopt=menu,menuone,longest,preview " disable preview scratch window
+"set completeopt=menu,menuone,longest,preview " disable preview scratch window
+"set completeopt=longest,menu,menuone,noinsert,noselect,preview " disable preview scratch window
+"set completeopt=menuone,noinsert,noselect " disable preview scratch window
+set completeopt=noinsert,menuone,noselect
 set dictionary+=$XDG_CONFIG_HOME/nvim/spell/en.utf-8.spl
+"set diffopt+=algorithm:patience,indent-heuristic
 set encoding=utf-8
+set errorformat+=%f:%l
 set foldmethod=syntax
-set foldlevel=0
+"set foldlevel=0
+set foldlevelstart=20
 set foldnestmax=1
 set hidden
 set modeline
@@ -76,6 +83,7 @@ set nowrap
 set number
 set relativenumber
 set pumheight=15
+set shortmess+=c " suppress the annoying 'match x of y', 'The only match' and 'Pattern not found' messages
 set smartindent
 "set spell
 set splitright
@@ -93,7 +101,7 @@ set completeopt+=noselect
 
 call plug#begin($XDG_CONFIG_HOME . "/nvim/plugged")
 
-" linters and status line:
+" section: linters and status line:
 let g:airline#extensions#tabline#buffer_min_count = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -103,35 +111,31 @@ let g:airline_powerline_fonts = 1
 Plug 'vim-airline/vim-airline'
 
 let g:autoformat_autoindent = 0 " if no known formatter then don't mess with the indentation
-let g:formatdef_shfmt = '"shfmt -s"'
+"let g:autoformat_verbosemode=1
+let g:formatdef_black = '"black --py36 -S"'
+"let g:formatdef_shfmt = '"shfmt -s"'
+let g:formatdef_terraformfmt = '"terraform fmt -"'
 let g:formatters_c = []
 let g:formatters_go = []
 let g:formatters_h = []
-let g:formatters_python = ['yapf']
-let g:formatters_sh = ['shfmt']
+let g:formatters_python = ['black']
+"let g:formatters_sh = ['shfmt']
+let g:formatters_terraform = ['terraformfmt']
 Plug 'Chiel92/vim-autoformat'
-let g:airline#extensions#ale#enabled = 1
-let g:ale_go_gometalinter_options = '--fast --errors'
-let g:ale_linters = {'go': ['gometalinter', 'gofmt', 'go build']}
-Plug 'w0rp/ale'
+"let g:airline#extensions#ale#enabled = 1
+"let g:ale_go_gometalinter_options = '--fast --errors'
+"let g:ale_linters = {'go': ['gometalinter', 'gofmt', 'go build']}
+"Plug 'w0rp/ale'
 
-" color schemes:
-"Plug 'chriskempson/base16-vim'
-"Plug 'chriskempson/vim-tomorrow-theme'
-"Plug 'cschlueter/vim-mustang'
-"Plug 'dracula/vim'
-"Plug 'dylanaraps/wal.vim'
-"let g:zenburn_high_Contrast = 1
-"Plug 'jnurmine/Zenburn'
-"Plug 'mattboehm/vim-unstack'
-"Plug 'mdlerch/vim-tungsten'
+" section: color schemes:
 Plug 'mhinz/vim-janah'
-"Plug 'morhetz/gruvbox'
-"Plug 'romainl/Apprentice'
-"Plug 'tomasr/molokai'
-"Plug 'fxn/vim-monochrome'
 
-" file type plugins (syntax, lint, format):
+" section: file type plugins (syntax, lint, format):
+let g:LanguageClient_serverCommands = {
+	\ 'go': ['go-langserver', '-gocodecompletion'],
+	\ 'python': ['pyls'],
+\ }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'chr4/nginx.vim', {'for': 'nginx'}
 
@@ -145,40 +149,47 @@ Plug 'davidhalter/jedi-vim', {'for': ['python']}
 let g:vim_json_syntax_conceal = 0
 Plug 'elzr/vim-json'
 
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>c <Plug>(go-callers)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>b <plug>(go-build)
+au FileType go nmap <leader>c <plug>(go-callers)
+au FileType go nmap <leader>r <plug>(go-referrers)
+au FileType go nmap <leader>t <plug>(go-test)
+au FileType go nmap <leader>i <plug>(go-info)
 let g:go_auto_type_info = 1
 let g:go_def_mapping_enabled = 1
+let g:go_def_mode = 'gopls'
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
 let g:go_highlight_build_constraints = 1
-Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'fatih/vim-go', {'for': ['go', 'gotexttmpl']}
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 Plug 'hashivim/vim-terraform'
 Plug 'hashivim/vim-vagrant'
 Plug 'LnL7/vim-nix'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-path'
 Plug 'pangloss/vim-javascript', {'for': 'js'}
 Plug 'pearofducks/ansible-vim'
-Plug 'Shougo/neco-syntax'
-
-let g:clang_format#code_style = 'llvm'
-let g:clang_format#style_options = {"BasedOnStyle": "LLVM", "IndentWidth": 8, "UseTab": "Always", "BreakBeforeBraces": "Linux", "AllowShortIfStatementsOnASingleLine": "false", "IndentCaseLabels": "false"}
-Plug 'rhysd/vim-clang-format', {'for': ['c', 'cpp']}
+Plug 'roxma/nvim-yarp'
 Plug 'saltstack/salt-vim'
 
 let g:xml_syntax_folding = 1
 Plug 'sukima/xmledit', {'for': 'xml'}
 Plug 'wgwoods/vim-systemd-syntax'
-Plug 'zchee/deoplete-clang', {'for': ['c', 'cpp']}
-Plug 'zchee/deoplete-go', {'for': ['go'], 'do': 'make'}
-Plug 'zchee/deoplete-jedi', {'for': ['python']}
+"Plug 'zchee/deoplete-clang', {'for': ['c', 'cpp']}
+"Plug 'zchee/deoplete-go', {'for': ['go'], 'do': 'make'}
+"Plug 'zchee/deoplete-jedi', {'for': ['python']}
 
-" misc:
+" section misc:
+Plug 'editorconfig/editorconfig-vim'
+
 let g:SuperTabDefaultCompletionType = '<c-n>'
 Plug 'ervandew/supertab'
+
+let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+"Plug 'nathanaelkane/vim-indent-guides'
 
 let g:nvimux_open_term_by_default = 1
 Plug 'kassio/neoterm' "nvimux depends on neoterm being loaded first
@@ -195,12 +206,13 @@ Plug 'mhinz/vim-startify' "TODO: learn better
 Plug 'qpkorr/vim-bufkill' "TODO:outgoint
 Plug 'rhysd/clever-f.vim'
 Plug 'salsifis/vim-transpose'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating' "TODO: learn better
+Plug 'tpope/vim-unimpaired'
 Plug 'triglav/vim-visual-increment' "TODO: learn better
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
@@ -208,6 +220,17 @@ Plug 'Valloric/ListToggle' "TODO: learn better
 Plug 'wellle/targets.vim' "TODO: learn better
 
 call plug#end()
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+function LC_maps()
+	if has_key(g:LanguageClient_serverCommands, &filetype)
+		nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+		nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+		nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+	endif
+endfunction
+autocmd FileType * call LC_maps()
 
 " plugin post-config:
 " Mapping selecting mappings
@@ -222,25 +245,7 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " colorscheme:
-"set background=dark
-"autocmd ColorScheme janah highlight Normal ctermbg=235
-"set background=dark
-"colorscheme Tomorrow-Night
-"colorscheme apprentice
-"colorscheme base16-ocean
-"colorscheme base16-tomorrow
-"colorscheme dracula
 colorscheme janah
-"colorscheme molokai
-"colorscheme monochrome
-"colorscheme wal
-"colorscheme zenburn
-
-"omfg huge thanks to @mhinz for this
-autocmd ColorScheme zenburn highlight CursorLineNr guibg=#333333
-autocmd ColorScheme zenburn highlight LineNr guibg=#333333
-autocmd ColorScheme zenburn highlight Visual guibg=#333333
-autocmd ColorScheme zenburn highlight VisualNOS guibg=#333333
 
 " other miscs:
 autocmd BufWritePre * :Autoformat
@@ -251,7 +256,7 @@ autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr>
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 autocmd Syntax gitcommit normal zR
 
-let g:deoplete#auto_completion_start_length = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#align_class = 1
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"let g:deoplete#auto_completion_start_length = 1
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#go#align_class = 1
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']

@@ -123,5 +123,4 @@ shellcheck
 centos
 ifaces
 globbing
-#aramater
-paramater/!
+reproduceability/!

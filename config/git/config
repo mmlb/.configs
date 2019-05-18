@@ -12,6 +12,7 @@
 	log1rm    = log --oneline --reverse master..
 	logrm     = log --reverse master..
 	mergenoff = merge --no-ff
+	mt        = !mergetool
 	pr        = "!f() { git fetch origin pull/$1/head:pr$1; }; f"
 	publish   = push -u
 	redo      = commit --amend -C HEAD
@@ -42,7 +43,6 @@
 	renamelimit = 0
 	algorithm = histogram
 	renames = copies
-	compactionHeuristic = true
 [difftool]
 	prompt = no
 [filter "lfs"]
