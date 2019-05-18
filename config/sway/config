@@ -245,8 +245,9 @@ bar {
         inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
         urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
     }
+    font Hack, FontAwesome 12
     position top
-    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    status_command i3status-rs ~/.config/i3/status.toml
     #tray_output primary
 }
 
