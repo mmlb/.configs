@@ -37,4 +37,4 @@ format = "{percentage}% {time}"
 [[block]]
 block = "time"
 interval = 60
-format = "%a %d/%m %R"
+format = "%a %d/%m %I:%M%p"
