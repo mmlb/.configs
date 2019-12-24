@@ -19,7 +19,8 @@ set $terminal alacritty
 
 # Your preferred application launcher
 #set $menu dmenu_run
-set $menu rofi -show run -matching fuzzy -lines 3 -eh 2 -width 50 -padding 500 -opacity 25 -bw 0 -bc '#2f343f' -bg '#2f343f' -fg '#f3f4f5' -hlbg '#2f343f' -hlfg '#9575cd' -font "Hack 18" -fullscreen
+#set $menu rofi -show run -matching fuzzy -lines 3 -eh 2 -width 50 -padding 500 -opacity 25 -bw 0 -bc '#2f343f' -bg '#2f343f' -fg '#f3f4f5' -hlbg '#2f343f' -hlfg '#9575cd' -font "Hack 18" -fullscreen
+set $menu wofi --show run
 
 # font pango:DejaVu Sans Mono 10
 font Hack 12
@@ -192,7 +193,7 @@ floating_modifier $mod
 # You can send windows there and get them back later.
 
 # Move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+#bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
@@ -267,8 +268,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #
 # Sreen Brightness Controls:
 #
-bindsym XF86MonBrightnessUp   exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp   exec light -A 10 -s sysfs/backlight/intel_backlight
+bindsym XF86MonBrightnessDown exec light -U 10 -s sysfs/backlight/intel_backlight
 
 #
 # Touchpad Controls:
@@ -295,8 +296,23 @@ bindsym XF86AudioPrev exec playerctl previous
 exec swayidle \
     timeout 1200 'swaylock -c 000000' \
     timeout 1500 'swaymsg "output * dpms off"' \
-       resume 'swaymsg "output * dpms on"' \
+    resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -c 000000'
 
+exec mako
+
 xwayland enable
+
+#set $scroll_button 275 # back button
+set $scroll_button 278 ring finger
+input "1390:306:ELECOM_TrackBall_Mouse_DEFT_Pro_TrackBall" {
+	scroll_method on_button_down
+	scroll_button $scroll_button
+}
+
+input "1390:307:DEFT_Pro_TrackBall" {
+	scroll_method on_button_down
+	scroll_button $scroll_button
+}
+
 include $(hostname)
