@@ -1,3 +1,5 @@
+# vim: set filetype=gitconfig :
+#
 [advice]
 	implicitIdentity = false
 [alias]
@@ -7,14 +9,15 @@
 	hub       = repo hub
 	lg        = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	log1      = log --oneline
+	log1d     = log --oneline develop..
 	log1m     = log --oneline master..
 	log1r     = log --oneline --reverse
+	log1rd    = log --oneline --reverse develop..
 	log1rm    = log --oneline --reverse master..
 	logrm     = log --reverse master..
 	mergenoff = merge --no-ff
 	mt        = !mergetool
 	pr        = "!f() { git fetch origin pull/$1/head:pr$1; }; f"
-	publish   = push -u
 	redo      = commit --amend -C HEAD
 	squash    = !sh -c 'git commit --squash=$(git fzf "$1")' "$1"
 [branch]
@@ -40,20 +43,22 @@
 [commit]
 	verbose = true
 [diff]
-	renamelimit = 0
+	renameLimit = 75
 	algorithm = histogram
 	renames = copies
 [difftool]
 	prompt = no
 [filter "lfs"]
+	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
 	required = true
-	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [help]
 	autocorrect = 1
 [interactive]
-	#diffFilter = diff-so-fancy --patch
+	diffFilter = diff-highlight
+[log]
+	date = auto:human
 [merge]
 	log = true
 	tool = meld
@@ -66,11 +71,14 @@
 [push]
 	default = current
 [rebase]
+	autoSquash = true
 	stat = true
 [submodule]
 	fetchJobs = 8
 [url "ssh://git@github.com/mistifyio"]
 	insteadOf = https://github.com/mistifyio
+[url "ssh://git@github.com/mmlb"]
+	insteadOf = https://github.com/mmlb
 [url "ssh://git@github.com/packethost"]
 	insteadOf = https://github.com/packethost
 [user]
