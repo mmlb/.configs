@@ -304,15 +304,9 @@ exec mako
 xwayland enable
 
 #set $scroll_button 275 # back button
-set $scroll_button 278 ring finger
-input "1390:306:ELECOM_TrackBall_Mouse_DEFT_Pro_TrackBall" {
+set $scroll_button 278 # ring finger
+input type:pointer {
 	scroll_method on_button_down
 	scroll_button $scroll_button
 }
-
-input "1390:307:DEFT_Pro_TrackBall" {
-	scroll_method on_button_down
-	scroll_button $scroll_button
-}
-
 include $(hostname)
