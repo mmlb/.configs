@@ -15,6 +15,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 #export MESA_GLSL_VERSION_OVERRIDE=430
 #export MESA_GL_VERSION_OVERRIDE=4.30
 export PATH=$HOME/bin:$HOME/go/bin:$HOME/.local/bin:$HOME/.zplug/bin:$PATH:$(realpath $(dirname $($HOME/bin/realwhich git))/../share/git/contrib/diff-highlight)
+[[ -d $HOME/go/src/github.com/packethost/eng-tools/bin ]] && export PATH=$PATH:$HOME/go/src/github.com/packethost/eng-tools/bin
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 #export TERM=xterm
 #export TERMINAL=alacritty
