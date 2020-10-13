@@ -68,12 +68,10 @@
 	stat = true
 [submodule]
 	fetchJobs = 8
-[url "ssh://git@github.com/mistifyio"]
-	insteadOf = https://github.com/mistifyio
-[url "ssh://git@github.com/mmlb"]
-	insteadOf = https://github.com/mmlb
-[url "ssh://git@github.com/packethost"]
-	insteadOf = https://github.com/packethost
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [user]
 	email = mmendez534@gmail.com
 	name = Manuel Mendez
@@ -97,3 +95,8 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
+[includeIf "gitdir:github.com/tinkerbell/"]
+	path = "~/.config/git/tinkerbell"
+[includeIf "gitdir:github.com/packethost/"]
+	path = "~/.config/git/packethost"

@@ -1,0 +1,7 @@
+# vim: set ft=gitconfig:
+
+[url "ssh://git@github.com/tinkerbell"]
+	insteadOf = https://github.com/tinkerbell
+
+[user]
+	email = mmendez@equinix.com
